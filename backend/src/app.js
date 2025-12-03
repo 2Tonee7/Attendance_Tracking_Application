@@ -8,4 +8,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.send('The backend is working correctly!');
+});
+
 export default app;
