@@ -8,7 +8,11 @@ import Attendance from './Attendance.js';
 User.hasMany(EventGroup, {foreignKey: 'organizer_id', as: 'organizedGroups'});
 EventGroup.belongsTo(User, {foreignKey: 'organizer_id', as: 'organizer'});
 
-EventGroup.hasMany(Event, { foreignKey: 'group_id', as: 'events' });
+EventGroup.hasMany(Event, { 
+  foreignKey: 'group_id', 
+  as: 'events',
+  onDelete: 'CASCADE' 
+});
 Event.belongsTo(EventGroup, { foreignKey: 'group_id', as: 'group' });
 
 Event.hasOne(AccessCode, { foreignKey: 'event_id', as: 'accessCode' });
