@@ -15,7 +15,7 @@ EventGroup.hasMany(Event, {
 });
 Event.belongsTo(EventGroup, { foreignKey: 'group_id', as: 'group' });
 
-Event.hasOne(AccessCode, { foreignKey: 'event_id', as: 'accessCode' });
+Event.hasOne(AccessCode, { foreignKey: 'event_id', as: 'accessCode',onDelete: 'CASCADE'  });
 AccessCode.belongsTo(Event, { foreignKey: 'event_id' });
 
 User.belongsToMany(Event, { through: Attendance, foreignKey: 'user_id', as: 'attendedEvents' });
@@ -23,8 +23,8 @@ Event.belongsToMany(User, { through: Attendance, foreignKey: 'event_id', as: 'pa
 
 Attendance.belongsTo(User, { foreignKey: 'user_id' });
 Attendance.belongsTo(Event, { foreignKey: 'event_id' });
-User.hasMany(Attendance, { foreignKey: 'user_id' });
-Event.hasMany(Attendance, { foreignKey: 'event_id' });
+User.hasMany(Attendance, { foreignKey: 'user_id', onDelete: 'CASCADE' });
+Event.hasMany(Attendance, { foreignKey: 'event_id', onDelete: 'CASCADE' });
 
 export {
     sequelize,
