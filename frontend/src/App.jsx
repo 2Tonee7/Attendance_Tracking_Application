@@ -3,6 +3,10 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './pages/Dashboard';
+import CreateEventGroup from './pages/CreateEventGroup';
+import EventList from './pages/EventList';
 import './styles/global.css';
 
 function App() {
@@ -13,10 +17,13 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/event-groups/new" element={<PrivateRoute><CreateEventGroup /></PrivateRoute>} />
+            <Route path="/event-groups/:id" element={<PrivateRoute><EventList /></PrivateRoute>} />
         </Routes>
       </Router>
     </AuthProvider>
   );
 }
-3
+
 export default App;
