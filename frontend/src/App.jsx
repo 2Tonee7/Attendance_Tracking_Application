@@ -9,6 +9,7 @@ import CreateEventGroup from './pages/CreateEventGroup';
 import EventList from './pages/EventList';
 import EventDetails from './pages/EventDetails';
 import AttendanceMonitor from './pages/AttendanceMonitor';
+import ParticipantCheckIn from './pages/ParticipantCheckIn';
 import './styles/global.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/check-in" element={<ParticipantCheckIn />} />
             <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             <Route path="/event-groups/new" element={<PrivateRoute><CreateEventGroup /></PrivateRoute>} />
             <Route path="/event-groups/:id" element={<PrivateRoute><EventList /></PrivateRoute>} />
